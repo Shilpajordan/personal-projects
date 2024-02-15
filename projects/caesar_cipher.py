@@ -7,7 +7,7 @@ shift = int(input("Type the shift number:\n"))
 def encrypt(text,shift):
   
   cipher_text = ""
-  
+
   for letter in text:  
     position = alphabet.index(letter)
     new_position = (position + shift) % 26 # to avoid index out of range error
@@ -15,4 +15,15 @@ def encrypt(text,shift):
     cipher_text += new_letter
   print(f"The encoded text is {cipher_text}")
 
-encrypt(text,shift)
+def decrypt(text,shift):
+  cipher_text = ""
+  for letter in text:
+    position = alphabet.index(letter)
+    new_position = (position - shift)%26
+    cipher_text += alphabet[new_position]
+  print(f"The encoded text is {cipher_text}")
+
+if direction == 'encode':
+  encrypt(text,shift)
+elif direction == 'decode':
+  decrypt(text, shift)
